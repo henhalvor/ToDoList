@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="normalize.css">
     <title>ToDO List</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <div class="header">
+        <img src="check-bold.svg" alt="CHECKMARK" id="logo" />
+        <h1>ToDo List</h1>
+      </div>
+      <div class="main-section-wrapper">
+        <div class="sidenav">
+          <div class="todo-list-buttons-wrapper">
+            <button>All Tasks</button>
+            <button>Today</button>
+            <button>This Week</button>
+          </div>
+          <div class="projects-buttons-wrapper">
+            <button>+ Add project</button>
+          </div>
+        </div>
+        <div class="main-content"></div>
+      </div>
+    </div>
+
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
