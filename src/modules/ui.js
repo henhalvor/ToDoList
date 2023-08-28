@@ -22,7 +22,10 @@ export default class UI {
     
     static loadAllTasksPage() {
         UI.mainContentWrapperReset();
+        // Storage.loadAllTasks()
+        // Create New Task input Button/form
 
+        // Test
         const textEl = document.createElement("h2");
         textEl.textContent = "All tasks";
         textEl.classList.add("text");
@@ -31,11 +34,20 @@ export default class UI {
         UI.mainContentWrapper.appendChild(textEl);
     }
 
-    static loadTodayPage() {}
+    static loadTodayPage() {
+        UI.mainContentWrapperReset();
+        // Storage.loadTodayTasks()
+    }
 
-    static loadThisWeekPage() {}
+    static loadThisWeekPage() {
+        UI.mainContentWrapperReset();
+        // Storage.loadThisWeekTasks()
+    }
 
-    static loadTagPage(tagName) {}
+    static loadTagPage(tagName) {
+        UI.mainContentWrapperReset();
+        // Storage.loadTagLists(tagName)
+    }
 
 
     // Add event listeners
@@ -49,13 +61,14 @@ export default class UI {
         // Select all "tagBtn" buttons
         const tagBtn = document.querySelectorAll("#tagBtn");
 
+
         // Event listeners
         allTasksBtn.addEventListener("click", UI.loadAllTasksPage);
         todayBtn.addEventListener("click", UI.loadTodayPage);
         thisWeekBtn.addEventListener("click", UI.loadThisWeekPage);
         addTagBtn.addEventListener("click", UI.createTagBtn);
-        // Needs logic to distinguish from different tag buttons by name
-        tagBtn.addEventListener("click", UI.loadTagPage);
+        
+        tagBtn.addEventListener("click", UI.loadTagPage(tagBtn.textContent)); // Needs logic to distinguish from different tag buttons by name
 
     }
 
@@ -65,8 +78,10 @@ export default class UI {
     static createTagBtn() {
         // create new tag from tag.js
 
+        // PopUp Modal
+
         const btn = document.createElement("button");
         btn.id = "tagBtn";
-        btn.textContent = //Tag name
+        btn.textContent = ""//Tag name / Modal return value;
     }
 }
