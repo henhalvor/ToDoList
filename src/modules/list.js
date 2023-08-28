@@ -1,13 +1,28 @@
 export default class List {
-    constructor(project) {
-        this.project = project;
+    constructor(name) {
+        this.name = name;
+        this.tasks = [];
     }
 
-    setProject(project) {
-        this.project = project;
+    // Getters / Setters
+    setName(name) {
+        this.name = name;
     }
 
-    getProject() {
-        return this.project;
+    getName() {
+        return this.name;
     }
+
+    getTasks() {
+        return this.tasks;
+    }
+
+    // Methods
+    addTask(task) {
+        this.tasks.push(task);
+    }
+
+    deleteTask(taskName) {
+        this.tasks = this.tasks.filter((task) => task.name !== taskName);
+      }
 }
