@@ -1,11 +1,16 @@
 // Tags for todolist from list.js
 
-class Tag {
+export default class Tag {
     constructor(name) {
         this.name = name;
+        this.lists = [];
     }
 
-    addList() {}
+    addList(newList) {
+        this.lists.push(newList);
+    }
 
-    deleteList() {}
+    deleteList(listName) {
+        this.lists = this.lists.filter((list) => list.name !== listName);
+    }
 }

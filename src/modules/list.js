@@ -18,8 +18,8 @@ export default class List {
     }
 
     // Methods
-    addTask(task) {
-        this.tasks.push(task);
+    addTask(newTask) {
+        this.tasks.push(newTask);
     }
 
     deleteTask(taskName) {

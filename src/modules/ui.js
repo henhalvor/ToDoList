@@ -1,5 +1,6 @@
 import List from "./list";
 import Task from "./task";
+import Tag from "./tag";
 
 
 export default class UI {
@@ -36,6 +37,7 @@ export default class UI {
 
     static loadTodayPage() {
         UI.mainContentWrapperReset();
+        //const todayTag = new Tag("Today")
         // Storage.loadTodayTasks()
     }
 
@@ -46,6 +48,7 @@ export default class UI {
 
     static loadTagPage(tagName) {
         UI.mainContentWrapperReset();
+        // createAddBtn()
         // Storage.loadTagLists(tagName)
     }
 
@@ -83,5 +86,15 @@ export default class UI {
         const btn = document.createElement("button");
         btn.id = "tagBtn";
         btn.textContent = ""//Tag name / Modal return value;
+    }
+
+    static createInputModal() {
+        // modal logic buttons, input tag, etc.
+        // return name of input
+    }
+
+    static createAddBtn() {
+        // <button>+ Add</button>
+        // onclick => createInputModal()
     }
 }
