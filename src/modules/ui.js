@@ -1,6 +1,7 @@
 import List from "./list";
 import Task from "./task";
 import Tag from "./tag";
+import Storage from "./storage";
 
 
 export default class UI {
@@ -78,7 +79,7 @@ export default class UI {
 
     // Create content
 
-    static createTagBtn() {
+    static createNewTagBtn() {
         // create new tag from tag.js
 
         // PopUp Modal
@@ -88,12 +89,14 @@ export default class UI {
         btn.textContent = ""//Tag name / Modal return value;
     }
 
-    static createInputModal() {
-        // modal logic buttons, input tag, etc.
+    static createInputModal(type) {
+        // modal logic buttons, input tag, etc. type prop for createNewListModal or createNewTaskModal
         // return name of input
     }
 
-    static createAddBtn() {
+    static createNewListBtn() {}
+
+    static createNewTaskBtn() {
         // <button>+ Add</button>
         // onclick => createInputModal()
     }
