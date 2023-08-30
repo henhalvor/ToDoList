@@ -1,0 +1,16 @@
+UI.js
+Add:
+renderList(list) function
+renderTag(tag) function
+
+
+
+Tag.js
+Add:
+getter and setter for lists
+
+
+
+HTML
+Add:
+Three dialog modals for: new tags, new lists, new tasks
