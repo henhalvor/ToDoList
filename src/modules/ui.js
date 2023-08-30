@@ -43,7 +43,7 @@ export default class UI {
         const todayList = new List("Today");
         todayTasks.map((task) => todayList.addTask(task));
 
-        // function to renderList()
+        // function to renderList(list)
     }
 
     static loadThisWeekPage() {
@@ -54,7 +54,7 @@ export default class UI {
     static loadTagPage(tagName) {
         UI.mainContentWrapperReset();
         // createAddBtn()
-        // Storage.loadTagLists(tagName)
+        // renderList(list) using tag.getLists()
     }
 
 

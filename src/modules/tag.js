@@ -13,4 +13,8 @@ export default class Tag {
     deleteList(listName) {
         this.lists = this.lists.filter((list) => list.name !== listName);
     }
+
+    // getlists()
+
+    // setLists()
 }
