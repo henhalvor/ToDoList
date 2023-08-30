@@ -38,8 +38,12 @@ export default class UI {
 
     static loadTodayPage() {
         UI.mainContentWrapperReset();
-        //const todayTag = new Tag("Today")
-        // Storage.loadTodayTasks()
+    
+        const todayTasks = Storage.serveTodayTasks();
+        const todayList = new List("Today");
+        todayTasks.map((task) => todayList.addTask(task));
+
+        // function to renderList()
     }
 
     static loadThisWeekPage() {
