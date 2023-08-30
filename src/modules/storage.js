@@ -13,7 +13,8 @@ export default class Storage {
     localStorage.setItem(`${array}`, jsonArray);
   }
 
-  // Load data from storage
+
+  // LOAD DATA FROM STORAGE
 
   // Pass inn array variable as key
   static loadDataFromStorage(key) {
@@ -26,20 +27,8 @@ export default class Storage {
     key = retrievedArray;
   }
 
-  // static updateArrayWithoutDuplicates(originalArray, newArray) {
-  //     // Create a Set from the original array to track existing values
-  //     var existingValues = new Set(originalArray);
 
-  //     // Filter out values from the new array that already exist in the original array
-  //     var uniqueValues = newArray.filter(item => !existingValues.has(item));
-
-  //     // Concatenate the original array with the unique values from the new array
-  //     var updatedArray = originalArray.concat(uniqueValues);
-
-  //     return updatedArray;
-  //   }
-
-  // Parse and serve data
+  // PARSE AND SERVE DATA
   static serveAllTasks() {
     const tasks = Storage.allTasks;
     return tasks; // shorten function
@@ -78,7 +67,7 @@ export default class Storage {
     return thisWeekTasks;
   }
 
-  // Helper functions
+  // HELPER FUNCTIONS
   static updateArrayWithoutDuplicates(originalArray, newArray) {
     // Create a Set from the original array to track existing values
     var existingValues = new Set(originalArray);
