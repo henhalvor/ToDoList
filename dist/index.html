@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="normalize.css" />
     <title>ToDO List</title>
   </head>
   <body>
@@ -24,7 +24,38 @@
             <button id="addTagBtn">+ Add Tag</button>
           </div>
         </div>
-        <div class="main-content"></div>
+        <div class="main-content">
+          <dialog data-modal class="modal" id="new-tag-modal">
+            <h1>New Tag</h1>
+            <form>
+              <input type="text" class="input-field" id="new-tag-input-field" />
+              <button type="submit" class="cancel-btn" formmethod="dialog">Cancel</button>
+              <button type="submit" class="add-btn">Add</button>
+            </form>
+          </dialog>
+          <dialog data-modal class="modal" id="new-list-modal">
+            <h1>New List</h1>
+            <form>
+              <input type="text" class="input-field" id="new-list-input-field" />
+              <button type="submit" class="cancel-btn" formmethod="dialog">Cancel</button>
+              <button type="submit" class="add-btn">Add</button>
+            </form>
+          </dialog>
+          <dialog data-modal class="modal" id="new-task-modal">
+            <h1>New Task</h1>
+            <form>
+              <input type="text" class="input-field" id="new-task-input-field" />
+              <button type="submit" class="cancel-btn" formmethod="dialog">Cancel</button>
+              <button type="submit" class="add-btn">Add</button>
+            </form>
+          </dialog>
+          <dialog data-modal class="modal" id="new-tag-modal">
+            <div class="view-list">
+              <h1>List Name</h1>
+              <div class="view-list-tasks"></div>
+            </div>
+          </dialog>
+        </div>
       </div>
     </div>
 
