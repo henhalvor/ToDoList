@@ -13,4 +13,4 @@ getter and setter for lists
 
 HTML
 Add:
-Three dialog modals for: new tags, new lists, new tasks
+Four dialog modals for: new tags, new lists, new tasks, show list
