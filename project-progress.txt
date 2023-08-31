@@ -13,4 +13,4 @@ getter and setter for lists
 
 HTML
 Add:
-Four dialog modals for: new tags, new lists, new tasks, show list
+add event listeners and implement dialog modals for: new tags, new lists, new tasks, show list
