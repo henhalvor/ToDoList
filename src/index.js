@@ -11,4 +11,4 @@ function initialLoad() {
     UI.loadHomepage();
 }
 
-initialLoad();
+document.addEventListener("DOMContentLoaded", () => initialLoad());
