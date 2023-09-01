@@ -62,7 +62,7 @@ export default class UI {
     // Modals
     static loadNewTagModal() {
         const modal = document.getElementById("new-tag-modal");
-        modal.showModal()
+        modal.showModal();
     }
 
 
