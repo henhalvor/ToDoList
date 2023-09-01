@@ -13,6 +13,7 @@ export default class UI {
         // Maybe not needed
         UI.mainContentWrapperReset();
 
+        // loadTagsToSidebar()
         UI.loadAllTasksPage();
         UI.initProjectsButtons();
 
@@ -24,7 +25,7 @@ export default class UI {
     
     static loadAllTasksPage() {
         UI.mainContentWrapperReset();
-        // Storage.loadAllTasks()
+        // Storage.serveAllTasks()
         // Create New Task input Button/form
 
         // Test
@@ -58,11 +59,59 @@ export default class UI {
         // renderList(list) using tag.getLists()
     }
 
+    static loadTagsToSidebar() {
+        const allTags = Storage.allTags;
+        allTags.map((tag) => {
+            const tagBtnWrapper = document.querySelector("tag-buttons-wrapper");
+            const tagBtn = document.createElement("button");
+
+            const tagBtnLeft = document.createElement("div");
+
+            // set name of tag element
+            const tagBtnMiddle = document.createElement("p");
+            tagBtnMiddle.textContent = `${tag.name}`;
+
+            const tagBtnRight = document.createElement("div");
+
+            // add css classes
+            
+
+            // append children
+            tagBtn.appendChild(tagBtnLeft);
+            tagBtn.appendChild(tagBtnMiddle);
+            tagBtn.appendChild(tagBtnRight);
+
+            tagBtnWrapper.appendChild(tagBtn);
+
+             
+        })
+    }
+
 
     // Modals
     static loadNewTagModal() {
         const modal = document.getElementById("new-tag-modal");
         modal.showModal();
+        const form = document.getElementById("new-tag-form");
+        form.addEventListener("submit", (event) => {
+            // Prevent default form submission
+            event.preventDefault();
+
+            // Get value
+            const inputField = document.getElementById("new-tag-input-field");
+            const inputValue = inputField.value;
+
+            // Clear input field
+            inputField.value = "";
+
+            // Create tag
+            const tag = new Tag(inputValue);
+
+            // Push to storage array
+            Storage.allTags.push(tag);
+
+            // loadHomePage()
+        })
     }
 
 
