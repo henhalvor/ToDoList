@@ -1,6 +1,5 @@
 UI.js
 Add:
-NEED TO FIX LOAD MODAL FUNCTION
 renderList(list) function
 renderTag(tag) function
 
