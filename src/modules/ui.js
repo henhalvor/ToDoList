@@ -34,6 +34,7 @@ export default class UI {
         const addTaskBtn = document.createElement("button")
 
         UI.mainContentWrapper.appendChild(textEl);
+        UI.loadNewTagModal();
     }
 
     static loadTodayPage() {
@@ -58,6 +59,13 @@ export default class UI {
     }
 
 
+    // Modals
+    static loadNewTagModal() {
+        const modal = document.getElementById("new-tag-modal");
+        modal.showModal()
+    }
+
+
     // Add event listeners
     
     static initProjectsButtons() {
@@ -71,12 +79,12 @@ export default class UI {
 
 
         // Event listeners
-        allTasksBtn.addEventListener("click", UI.loadAllTasksPage);
-        todayBtn.addEventListener("click", UI.loadTodayPage);
-        thisWeekBtn.addEventListener("click", UI.loadThisWeekPage);
-        addTagBtn.addEventListener("click", UI.createTagBtn);
+        allTasksBtn.addEventListener("click", () => UI.loadAllTasksPage());
+        todayBtn.addEventListener("click", () => UI.loadTodayPage());
+        thisWeekBtn.addEventListener("click", () => UI.loadThisWeekPage());
+        addTagBtn.addEventListener("click", () => UI.createTagBtn());
         
-        tagBtn.addEventListener("click", UI.loadTagPage(tagBtn.textContent)); // Needs logic to distinguish from different tag buttons by name
+        tagBtn.addEventListener("click", () => UI.loadTagPage(tagBtn.textContent)); // Needs logic to distinguish from different tag buttons by name
 
     }
 
