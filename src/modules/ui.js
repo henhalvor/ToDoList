@@ -59,9 +59,10 @@ export default class UI {
     }
 
     static loadTagsToSidebar() {
+        const tagBtnWrapper = document.querySelector(".tag-buttons-wrapper");
+        tagBtnWrapper.innerHTML = "";
         const allTags = Storage.allTags;
-        allTags.map((tag) => {
-            const tagBtnWrapper = document.querySelector(".tag-buttons-wrapper");
+        allTags.forEach((tag) => {
             const tagBtn = document.createElement("button");
             tagBtn.textContent = `${tag.name}`;
             tagBtn.addEventListener("click", () => UI.loadTagPage(tag));
@@ -108,14 +109,19 @@ export default class UI {
             const tagName = inputField.value;
             console.log(tagName)
 
+            // check value
+            if (tagName !== "") {
+                // Create tag
+                const tag = new Tag(`${tagName}`);
+                
+                // Push to storage array
+                Storage.allTags.push(tag);
+            }
+
             // Clear input field
             inputField.value = "";
 
-            // Create tag
-            const tag = new Tag(`${tagName}`);
 
-            // Push to storage array
-            Storage.allTags.push(tag);
 
             UI.loadTagsToSidebar();
         })
