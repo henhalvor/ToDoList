@@ -76,6 +76,7 @@ export default class UI {
                 // create card with list tasks and render in DOM
                 const card = document.createElement("div");
                 card.classList.add("list-card");
+                // ADD EVENT LISTENER "CLICK" TO RENDER VIEW LIST MODAL
 
                 // Card content
                 const cardTitle = document.createElement("h2");
