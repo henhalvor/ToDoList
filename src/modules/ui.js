@@ -53,7 +53,7 @@ export default class UI {
         // Storage.loadThisWeekTasks()
     }
 
-    static loadTagPage(tagName) {
+    static loadTagPage(tag) {
         UI.mainContentWrapperReset();
         // createAddBtn()
         // renderList(list) using tag.getLists()
@@ -64,25 +64,29 @@ export default class UI {
         allTags.map((tag) => {
             const tagBtnWrapper = document.querySelector("tag-buttons-wrapper");
             const tagBtn = document.createElement("button");
+            tagBtn.textContent = `${tag.name}`;
+            tagBtn.addEventListener("click", () => UI.loadTagPage(tag));
 
-            const tagBtnLeft = document.createElement("div");
 
-            // set name of tag element
-            const tagBtnMiddle = document.createElement("p");
-            tagBtnMiddle.textContent = `${tag.name}`;
 
-            const tagBtnRight = document.createElement("div");
+            // const tagBtnLeft = document.createElement("div");
 
-            // add css classes
-            
+            // // set name of tag element
+            // const tagBtnMiddle = document.createElement("p");
+            // tagBtnMiddle.textContent = `${tag.name}`;
 
-            // append children
-            tagBtn.appendChild(tagBtnLeft);
-            tagBtn.appendChild(tagBtnMiddle);
-            tagBtn.appendChild(tagBtnRight);
+            // const tagBtnRight = document.createElement("div");
+
+            // // add css classes
+
+
+            // // append children
+            // tagBtn.appendChild(tagBtnLeft);
+            // tagBtn.appendChild(tagBtnMiddle);
+            // tagBtn.appendChild(tagBtnRight);
 
             tagBtnWrapper.appendChild(tagBtn);
-
+            // UI.loadHomePage();
              
         })
     }
