@@ -1,7 +1,8 @@
 UI.js
 Add:
+loadTagPage(tag) function "new list BTN, cards for lists "onclick" Modal"
 renderList(list) function
-loadTagToSidebar(tag) function FIX DUPLICATION BUG
+
 
 
 
@@ -15,5 +16,8 @@ HTML
 Add:
 add event listeners and implement dialog modals for: new tags, new lists, new tasks, show list
 
+CSS
+Add:
+Sidenav: add style to ".tag-buttons-wrapper" (margin), fix margins in ".todo-list-buttons-wrapper"
 
 CREATE BAREBONES FUNCTIONALITY AND STYLE / REIMPLEMENT LATER
