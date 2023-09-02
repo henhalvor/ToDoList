@@ -54,8 +54,25 @@ export default class UI {
 
     static loadTagPage(tag) {
         UI.mainContentWrapperReset();
-        // createAddBtn()
-        // renderList(list) using tag.getLists()
+        const tagPageWrapper = document.createElement("div");
+        tagPageWrapper.classList.add("tag-page-wrapper");
+
+        // Add List Btn
+        const newListBtn = document.createElement("button");
+        newListBtn.textContent = "+ Add List";
+        newListBtn.classList.add("new-btn");
+        newListBtn.addEventListener("click", () => UI.createNewListModal());
+        
+        // Render Lists
+        const tagLists = tag.getLists();
+        tagLists.forEach((list) => {
+            // create card with list tasks and render in DOM
+        }) 
+
+        // Append elements to wrapper
+        tagPageWrapper.appendChild(newListBtn);
+
+        UI.mainContentWrapper.appendChild(tagPageWrapper);
     }
 
     static loadTagsToSidebar() {
@@ -113,7 +130,7 @@ export default class UI {
             if (tagName !== "") {
                 // Create tag
                 const tag = new Tag(`${tagName}`);
-                
+
                 // Push to storage array
                 Storage.allTags.push(tag);
             }
@@ -126,6 +143,8 @@ export default class UI {
             UI.loadTagsToSidebar();
         })
     }
+
+    static createNewListModal() {}
 
 
     // Add event listeners
