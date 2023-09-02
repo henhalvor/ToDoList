@@ -1,7 +1,7 @@
 UI.js
 Add:
 renderList(list) function
-loadTagToSidebar(tag) function
+loadTagToSidebar(tag) function FIX DUPLICATION BUG
 
 
 
