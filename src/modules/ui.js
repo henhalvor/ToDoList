@@ -61,13 +61,42 @@ export default class UI {
         const newListBtn = document.createElement("button");
         newListBtn.textContent = "+ Add List";
         newListBtn.classList.add("new-btn");
-        newListBtn.addEventListener("click", () => UI.createNewListModal());
+        newListBtn.addEventListener("click", () => {
+            UI.createNewListModal();
+            // Re-render lists after creating new one
+            renderLists();
+        });
         
-        // Render Lists
-        const tagLists = tag.getLists();
-        tagLists.forEach((list) => {
-            // create card with list tasks and render in DOM
-        }) 
+        function renderLists() {
+            const tagLists = tag.getLists();
+            tagLists.forEach((list) => {
+                // List tasks
+                const listTasks = list.getTasks();
+
+                // create card with list tasks and render in DOM
+                const card = document.createElement("div");
+                card.classList.add("list-card");
+
+                // Card content
+                const cardTitle = document.createElement("h2");
+                cardTitle.textContent = `${list.getName()}`;
+                card.appendChild(cardTitle)
+
+                for (let i = 0; 1 < 5 && i < listTasks.length; i++) {
+                    const task = listTasks[i];
+                    const cardTaskEl = document.createElement("h4");
+                    cardTaskEl.textContent = `${task.getName()}`;
+                    card.appendChild(cardTaskEl);
+                }
+
+                tagPageWrapper.appendChild(card); 
+            })
+
+        }
+
+        // Render lists within tag
+        renderLists();
+
 
         // Append elements to wrapper
         tagPageWrapper.appendChild(newListBtn);
@@ -113,10 +142,11 @@ export default class UI {
         modal.showModal();
         
         // cancel button
-        const cancelBtn = document.querySelector(".modal-cancel-btn");
+        const cancelBtn = document.getElementById("tag-modal-cancel-btn");
         cancelBtn.addEventListener("click", () => modal.close());
         
-        const submitBtn = document.querySelector(".modal-submit-btn");
+        // Submit btn
+        const submitBtn = document.getElementById("tag-modal-submit-btn");
         submitBtn.addEventListener("click", () => {
             // close modal
             modal.close();
@@ -144,7 +174,35 @@ export default class UI {
         })
     }
 
-    static createNewListModal() {}
+    static createNewListModal() {
+        const modal = document.getElementById("new-list-modal");
+        modal.showModal();
+
+        // cancel btn
+        const cancelBtn = document.getElementById("list-modal-cancel-btn");
+        cancelBtn.addEventListener("click", () => modal.close());
+
+        // Submit btn
+        const submitBtn = document.getElementById("list-modal-submit-btn");
+        submitBtn.addEventListener("click", () => {
+            // Close modal
+            modal.close();
+
+            // Input field
+            const inputField = document.getElementById("new-list-input-field");
+            const listName = inputField.value;
+            console.log(listName);
+
+            // Check value
+            if (listName !== "") {
+                const list = new List(`${listName}`);
+                Storage.allLists.push(list);
+            }
+
+            inputField.value = "";
+
+        })
+    }
 
 
     // Add event listeners
