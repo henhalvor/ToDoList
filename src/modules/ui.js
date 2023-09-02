@@ -35,7 +35,6 @@ export default class UI {
         const addTaskBtn = document.createElement("button")
 
         UI.mainContentWrapper.appendChild(textEl);
-        UI.loadNewTagModal();
     }
 
     static loadTodayPage() {
@@ -62,7 +61,7 @@ export default class UI {
     static loadTagsToSidebar() {
         const allTags = Storage.allTags;
         allTags.map((tag) => {
-            const tagBtnWrapper = document.querySelector("tag-buttons-wrapper");
+            const tagBtnWrapper = document.querySelector(".tag-buttons-wrapper");
             const tagBtn = document.createElement("button");
             tagBtn.textContent = `${tag.name}`;
             tagBtn.addEventListener("click", () => UI.loadTagPage(tag));
@@ -86,35 +85,39 @@ export default class UI {
             // tagBtn.appendChild(tagBtnRight);
 
             tagBtnWrapper.appendChild(tagBtn);
-            // UI.loadHomePage();
-             
         })
     }
 
 
     // Modals
-    static loadNewTagModal() {
+    static createNewTagModal() {
         const modal = document.getElementById("new-tag-modal");
         modal.showModal();
-        const form = document.getElementById("new-tag-form");
-        form.addEventListener("submit", (event) => {
-            // Prevent default form submission
-            event.preventDefault();
+        
+        // cancel button
+        const cancelBtn = document.querySelector(".modal-cancel-btn");
+        cancelBtn.addEventListener("click", () => modal.close());
+        
+        const submitBtn = document.querySelector(".modal-submit-btn");
+        submitBtn.addEventListener("click", () => {
+            // close modal
+            modal.close();
 
             // Get value
             const inputField = document.getElementById("new-tag-input-field");
-            const inputValue = inputField.value;
+            const tagName = inputField.value;
+            console.log(tagName)
 
             // Clear input field
             inputField.value = "";
 
             // Create tag
-            const tag = new Tag(inputValue);
+            const tag = new Tag(`${tagName}`);
 
             // Push to storage array
             Storage.allTags.push(tag);
 
-            // loadHomePage()
+            UI.loadTagsToSidebar();
         })
     }
 
@@ -127,37 +130,18 @@ export default class UI {
         const todayBtn = document.querySelector("#todayBtn");
         const thisWeekBtn = document.querySelector("#thisWeekBtn");
         const addTagBtn = document.querySelector("#addTagBtn");
-        // Select all "tagBtn" buttons
-        const tagBtn = document.querySelectorAll("#tagBtn");
+
 
 
         // Event listeners
         allTasksBtn.addEventListener("click", () => UI.loadAllTasksPage());
         todayBtn.addEventListener("click", () => UI.loadTodayPage());
         thisWeekBtn.addEventListener("click", () => UI.loadThisWeekPage());
-        addTagBtn.addEventListener("click", () => UI.createTagBtn());
-        
-        tagBtn.addEventListener("click", () => UI.loadTagPage(tagBtn.textContent)); // Needs logic to distinguish from different tag buttons by name
-
+        addTagBtn.addEventListener("click", () => UI.createNewTagModal());
     }
 
 
     // Create content
-
-    static createNewTagBtn() {
-        // create new tag from tag.js
-
-        // PopUp Modal
-
-        const btn = document.createElement("button");
-        btn.id = "tagBtn";
-        btn.textContent = ""//Tag name / Modal return value;
-    }
-
-    static createInputModal(type) {
-        // modal logic buttons, input tag, etc. type prop for createNewListModal or createNewTaskModal
-        // return name of input
-    }
 
     static createNewListBtn() {}
 
