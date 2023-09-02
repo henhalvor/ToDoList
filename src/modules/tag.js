@@ -15,6 +15,9 @@ export default class Tag {
     }
 
     // getlists()
+    getLists() {
+        return this.lists;
+    }
 
     // setLists()
 }
