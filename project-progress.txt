@@ -5,6 +5,8 @@ loadTagPage(tag) function "new list BTN, cards for lists "onclick" Modal"
 
 viewListModal(list) function "should display all tasks and have a Add Task btn"
 
+createNewTaskModal(list)
+
 
 
 
