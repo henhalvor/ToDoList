@@ -1,9 +1,5 @@
 UI.js
 Add:
-loadTagPage(tag) function "new list BTN, cards for lists "onclick" Modal"
-    renderLists() function "Add event listener to card for rendering viewlistMODAL"
-
-viewListModal(list) function "should display all tasks and have a Add Task btn"
 
 createNewTaskModal(list)
 
