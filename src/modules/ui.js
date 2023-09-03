@@ -57,17 +57,21 @@ export default class UI {
         const tagPageWrapper = document.createElement("div");
         tagPageWrapper.classList.add("tag-page-wrapper");
 
+
         // Add List Btn
         const newListBtn = document.createElement("button");
         newListBtn.textContent = "+ Add List";
         newListBtn.classList.add("new-btn");
         newListBtn.addEventListener("click", () => {
-            UI.createNewListModal();
+            UI.createNewListModal(tag);
             // Re-render lists after creating new one
             renderLists();
         });
         
         function renderLists() {
+            // clear wrapper
+            tagPageWrapper.innerHTML = "";
+
             const tagLists = tag.getLists();
             tagLists.forEach((list) => {
                 // List tasks
@@ -175,13 +179,20 @@ export default class UI {
         })
     }
 
-    static createNewListModal() {
+    static createNewListModal(tag) {
         const modal = document.getElementById("new-list-modal");
         modal.showModal();
 
+        // Get input field
+        const inputField = document.getElementById("new-list-input-field");
+
         // cancel btn
         const cancelBtn = document.getElementById("list-modal-cancel-btn");
-        cancelBtn.addEventListener("click", () => modal.close());
+        cancelBtn.addEventListener("click", () => {
+            modal.close();
+            inputField.value = "";
+            UI.loadTagPage(tag);
+        });
 
         // Submit btn
         const submitBtn = document.getElementById("list-modal-submit-btn");
@@ -189,15 +200,20 @@ export default class UI {
             // Close modal
             modal.close();
 
-            // Input field
-            const inputField = document.getElementById("new-list-input-field");
+            // Get value from input field
             const listName = inputField.value;
             console.log(listName);
 
             // Check value
             if (listName !== "") {
                 const list = new List(`${listName}`);
+                // push to storage (maybe not needed)
                 Storage.allLists.push(list);
+                // push to tag lists arrray
+                tag.addList(list);
+
+                // reload page
+                UI.loadTagPage(tag);
             }
 
             inputField.value = "";
