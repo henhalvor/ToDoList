@@ -80,7 +80,7 @@ export default class UI {
                 // create card with list tasks and render in DOM
                 const card = document.createElement("div");
                 card.classList.add("list-card");
-                // ADD EVENT LISTENER "CLICK" TO RENDER VIEW LIST MODAL
+                card.addEventListener("click", () => UI.viewListModal(list));
 
                 // Card content
                 const cardTitle = document.createElement("h2");
@@ -219,6 +219,41 @@ export default class UI {
             inputField.value = "";
 
         })
+    }
+
+    static viewListModal(list) {
+        const modal = document.getElementById("view-list-modal");
+        modal.showModal();
+        // Reset html before rendering again
+        modal.innerHTML = "";
+
+
+        const listTasks = list.getTasks();
+
+        // Rendered elements
+        const listTitle = document.createElement("h2");
+        listTitle.textContent = `${list.getName()}`;
+        modal.appendChild(listTitle);
+
+        listTasks.forEach((task) => {
+            const taskEl = document.createElement("p");
+            taskEl.textContent = `${task.getName()}`;
+            modal.appendChild(taskEl);
+        })
+
+        // Add Btn
+        const addTaskBtn = document.createElement("button");
+        addTaskBtn.textContent = "Add";
+        addTaskBtn.classList.add("add-btn")
+        addTaskBtn.addEventListener("click", () => {}) // ADD CREATE NEW TASK MODAL FUNCTION TO EVENT LISTENER
+        modal.appendChild(addTaskBtn);
+
+        // Close Btn
+        const closeBtn = document.createElement("button");
+        closeBtn.textContent = "Close";
+        closeBtn.classList.add("close-btn");
+        closeBtn.addEventListener("click", () => modal.close());
+        modal.appendChild(closeBtn);
     }
 
 
