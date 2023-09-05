@@ -13,6 +13,9 @@ Date and Status fucntionality for tasks()
 Priority system for lists
 
 
+BUG New tasks only get saved on first list created with tasks
+
+
 
 
 
