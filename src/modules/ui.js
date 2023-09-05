@@ -245,7 +245,7 @@ export default class UI {
         const addTaskBtn = document.createElement("button");
         addTaskBtn.textContent = "Add";
         addTaskBtn.classList.add("add-btn")
-        addTaskBtn.addEventListener("click", () => {}) // ADD CREATE NEW TASK MODAL FUNCTION TO EVENT LISTENER
+        addTaskBtn.addEventListener("click", () => UI.createNewTaskModal(list)) // ADD CREATE NEW TASK MODAL FUNCTION TO EVENT LISTENER
         modal.appendChild(addTaskBtn);
 
         // Close Btn
@@ -255,6 +255,40 @@ export default class UI {
         closeBtn.addEventListener("click", () => modal.close());
         modal.appendChild(closeBtn);
     }
+
+    static createNewTaskModal(list) {
+        const modal = document.getElementById("new-task-modal");
+        modal.showModal();
+
+        // Get Input Field
+        const inputField = document.getElementById("new-task-input-field");
+
+        // Cancel Btn
+        const cancelBtn = document.getElementById("new-task-modal-cancel-btn");
+        cancelBtn.addEventListener("click", () => {
+            modal.close();
+            inputField.value = "";
+            // UI.viewListModal(list);
+        })
+
+        // Submit
+        const submitBtn = document.getElementById("new-task-modal-submit-btn");
+        submitBtn.addEventListener("click", () => {
+            modal.close();
+            const taskName = inputField.value;
+
+            if (taskName !== "") {
+                const task = new Task(taskName, "Not Implemented", "Not completed");
+                Storage.allTasks.push(task);
+                list.addTask(task);
+
+                UI.viewListModal(list);
+            }
+            inputField.value = "";
+        })
+    }
+
+
 
 
     // Add event listeners
