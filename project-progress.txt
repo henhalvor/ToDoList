@@ -1,4 +1,4 @@
-
+BUG IN UI.createNewListModal(tag)
 
 Tag.js
 Add:
