@@ -14,10 +14,16 @@ export default class Tag {
         this.lists = this.lists.filter((list) => list.name !== listName);
     }
 
-    // getlists()
     getLists() {
         return this.lists;
     }
 
-    // setLists()
+    getName() {
+        return this.name;
+    }
+    
+    setName(name) {
+        this.name = name;
+    }
+
 }

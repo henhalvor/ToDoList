@@ -13,7 +13,6 @@ export default class Storage {
     localStorage.setItem(`${array}`, jsonArray);
   }
 
-
   // LOAD DATA FROM STORAGE
 
   // Pass inn array variable as key
@@ -27,14 +26,20 @@ export default class Storage {
     key = retrievedArray;
   }
 
-
-  // PARSE AND SERVE DATA
-  static serveAllTasks() {
-    const tasks = Storage.allTasks;
-    return tasks; // shorten function
+  // Getters
+  static getAllTasks() {
+    return Storage.allTasks;
   }
 
-  static serveTodayTasks() {
+  static getAllLists() {
+    return Storage.allLists;
+  }
+
+  static getAllTags() {
+    return Storage.allTags;
+  }
+
+  static getTodayTasks() {
     const date = new Date();
     const day = date.getDate();
 
@@ -50,7 +55,7 @@ export default class Storage {
     return todayTasks;
   }
 
-  static serveThisWeekTasks() {
+  static getThisWeekTasks() {
     const currentDate = new Date();
     const currentWeek = Storage.getWeekNumber(currentDate);
 
@@ -67,7 +72,20 @@ export default class Storage {
     return thisWeekTasks;
   }
 
-  // HELPER FUNCTIONS
+  // Setters
+  static saveTask(task) {
+    return Storage.allTasks.push(task);
+  }
+
+  static saveList(list) {
+    return Storage.allLists.push(list);
+  }
+
+  static saveTag(tag) {
+    return Storage.allTags.push(tag);
+  }
+
+  // Helper Functions
   static updateArrayWithoutDuplicates(originalArray, newArray) {
     // Create a Set from the original array to track existing values
     var existingValues = new Set(originalArray);
