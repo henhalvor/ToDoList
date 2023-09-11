@@ -7,9 +7,6 @@ const MAIN_CONTENT_CONTAINER = document.querySelector(".main-content");
 const TAG_BTNS_CONTAINER = document.querySelector(".tag-buttons-wrapper");
 
 export default class UI {
-  selectedTag = null;
-  selectedList = null;
-
   static loadHomepage() {
     UI.mainContentWrapperReset();
     UI.initSideNavBtns();
@@ -47,14 +44,11 @@ export default class UI {
 
       // check value
       if (tagName !== "") {
-        // Create ID
-        const tagId = UI.generateId();
-
         // Create tag
-        const tag = new Tag(tagName, tagId);
+        const tag = new Tag(tagName);
 
         // Push to storage array
-        Storage.allTags.push(tag);
+        Storage.addTag(tag);
       }
 
       // Clear input field
@@ -65,8 +59,7 @@ export default class UI {
   }
 
   static createNewListModal() {
-    console.log(UI.selectedTag.getName())
-    const tag = UI.selectedTag;
+    const tag = Storage.getSelectedTag();
     const modal = document.getElementById("new-list-modal");
     modal.showModal();
 
@@ -100,7 +93,7 @@ export default class UI {
         tag.addList(list);
 
         // reload page
-        UI.loadTagPage(tag);
+        UI.loadTagPage();
       }
 
       inputField.value = "";
@@ -108,7 +101,7 @@ export default class UI {
   }
 
   static viewListModal() {
-    const list = UI.selectedList;
+    const list = Storage.getSelectedList();
     const modal = document.getElementById("view-list-modal");
     modal.showModal();
     // Reset html before rendering again
@@ -142,9 +135,8 @@ export default class UI {
     modal.appendChild(closeBtn);
   }
 
-
   static createNewTaskModal() {
-    const list = UI.selectedList;
+    const list = Storage.getSelectedList();
     const modal = document.getElementById("new-task-modal");
     modal.showModal();
 
@@ -167,7 +159,7 @@ export default class UI {
 
       if (taskName !== "") {
         const task = new Task(taskName, "Not Implemented", "Not completed");
-        Storage.allTasks.push(task);
+        Storage.addTask(task);
         list.addTask(task);
 
         UI.viewListModal(list);
@@ -184,7 +176,7 @@ export default class UI {
       const tagBtn = document.createElement("button");
       tagBtn.textContent = tag.getName();
       tagBtn.addEventListener("click", () => {
-        UI.selectedTag = tag;
+        Storage.setSelectedTag(tag);
         UI.loadTagPage();
       });
 
@@ -193,7 +185,7 @@ export default class UI {
   }
 
   static loadTagPage() {
-    const tag = UI.selectedTag;
+    const tag = Storage.getSelectedTag();
     UI.mainContentWrapperReset();
     const tagPageContainer = document.createElement("div");
     tagPageContainer.classList.add("tag-page-wrapper");
@@ -221,8 +213,8 @@ export default class UI {
         const card = document.createElement("div");
         card.classList.add("list-card");
         card.addEventListener("click", () => {
-            UI.selectedList = list;
-            UI.viewListModal();
+          Storage.setSelectedList(list);
+          UI.viewListModal();
         });
 
         // Card content
@@ -267,10 +259,6 @@ export default class UI {
   }
 
   // Helper functions
-
-  static generateId() {
-    return Math.floor(Math.random() * 1000000000);
-  }
 
   static mainContentWrapperReset() {
     MAIN_CONTENT_CONTAINER.innerHTML = "";
