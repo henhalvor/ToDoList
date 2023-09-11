@@ -40,7 +40,7 @@ export default class UI {
       // Get value
       const inputField = document.getElementById("new-tag-input-field");
       const tagName = inputField.value;
-      console.log(tagName);
+      
 
       // check value
       if (tagName !== "") {
@@ -60,6 +60,7 @@ export default class UI {
 
   static createNewListModal() {
     const tag = Storage.getSelectedTag();
+    console.log(`createNewListModal() ${tag.getName()}`);
     const modal = document.getElementById("new-list-modal");
     modal.showModal();
 
@@ -77,12 +78,15 @@ export default class UI {
     // Submit btn
     const submitBtn = document.getElementById("list-modal-submit-btn");
     submitBtn.addEventListener("click", () => {
+      // Make sure correct tag is accessed by arrow function -- FIXED LIST SAVING BUG
+      const tag = Storage.getSelectedTag();
+
       // Close modal
       modal.close();
 
       // Get value from input field
       const listName = inputField.value;
-      console.log(listName);
+      
 
       // Check value
       if (listName !== "") {
@@ -90,7 +94,9 @@ export default class UI {
         // push to storage (maybe not needed)
         Storage.addList(list);
         // push to tag lists arrray
+
         tag.addList(list);
+        console.log(`createNewListModal() SUBMIT BTN ${tag.getName()}`);
 
         // reload page
         UI.loadTagPage();
@@ -102,6 +108,7 @@ export default class UI {
 
   static viewListModal() {
     const list = Storage.getSelectedList();
+    console.log(list)
     const modal = document.getElementById("view-list-modal");
     modal.showModal();
     // Reset html before rendering again
@@ -154,6 +161,7 @@ export default class UI {
     // Submit
     const submitBtn = document.getElementById("new-task-modal-submit-btn");
     submitBtn.addEventListener("click", () => {
+      const list = Storage.getSelectedList(); // FIXED TASK SAVING BUG
       modal.close();
       const taskName = inputField.value;
 
@@ -186,6 +194,7 @@ export default class UI {
 
   static loadTagPage() {
     const tag = Storage.getSelectedTag();
+    // console.log(tag);  --SHOWS CORRECT TAG
     UI.mainContentWrapperReset();
     const tagPageContainer = document.createElement("div");
     tagPageContainer.classList.add("tag-page-wrapper");
