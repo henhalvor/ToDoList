@@ -5,6 +5,42 @@ export default class Storage {
   static allLists = [];
   static allTags = [];
 
+  // Selection logic
+  static selectedTag = null;
+  static selectedList = null;
+
+  static getSelectedTag() {
+    return Storage.selectedTag;
+  }
+
+  static getSelectedList() {
+    return Storage.selectedList;
+  }
+
+  static getSelectedTagId() {
+    if (Storage.selectedTag !== null) {
+      return Storage.selectedTag.id;
+    } else {
+      throw new Error("Selected tag is null");
+    }
+  }
+
+  static getSelectedListId() {
+    if (Storage.selectedList !== null) {
+      return Storage.selectedList.id;
+    } else {
+      throw new Error("Selected list is null");
+    }
+  }
+
+  static setSelectedTag(tag) {
+    Storage.selectedTag = tag;
+  }
+
+  static setSelectedList(list) {
+    Storage.selectedList = list;
+  }
+
   // Save data related functions
   static savedata(array) {
     // Convert to JSON
