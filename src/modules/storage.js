@@ -73,15 +73,15 @@ export default class Storage {
   }
 
   // Setters
-  static saveTask(task) {
+  static addTask(task) {
     return Storage.allTasks.push(task);
   }
 
-  static saveList(list) {
+  static addList(list) {
     return Storage.allLists.push(list);
   }
 
-  static saveTag(tag) {
+  static addTag(tag) {
     return Storage.allTags.push(tag);
   }
 

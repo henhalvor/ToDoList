@@ -1,9 +1,10 @@
 // Tags for todolist from list.js
 
 export default class Tag {
-    constructor(name) {
+    constructor(name, id) {
         this.name = name;
         this.lists = [];
+        this.id = id;
     }
 
     addList(newList) {
@@ -24,6 +25,14 @@ export default class Tag {
     
     setName(name) {
         this.name = name;
+    }
+
+    getId() {
+        return this.id;
+    }
+
+    setId(id) {
+        this.id = id;
     }
 
 }
