@@ -1,10 +1,10 @@
 // Tags for todolist from list.js
 
 export default class Tag {
-    constructor(name, id) {
+    constructor(name) {
         this.name = name;
         this.lists = [];
-        this.id = id;
+        this.id = Math.floor(Math.random() * 1000000000);
     }
 
     addList(newList) {
@@ -29,10 +29,6 @@ export default class Tag {
 
     getId() {
         return this.id;
-    }
-
-    setId(id) {
-        this.id = id;
     }
 
 }

@@ -2,6 +2,7 @@ export default class List {
   constructor(name) {
     this.name = name;
     this.tasks = [];
+    this.id = Math.floor(Math.random() * 1000000000);
   }
 
   setName(name) {
@@ -22,5 +23,9 @@ export default class List {
 
   deleteTask(taskName) {
     this.tasks = this.tasks.filter((task) => task.name !== taskName);
+  }
+
+  getId() {
+    return this.id;
   }
 }
