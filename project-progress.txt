@@ -1,6 +1,5 @@
 UI.js 
-re render page after cancel or submit of tag/list/task
-move renderLists() to class level function
+
 
 
 
