@@ -154,13 +154,15 @@ export default class UI {
     modal.showModal();
 
     // Get Input Field
-    const inputField = document.getElementById("new-task-input-field");
+    const nameInputField = document.getElementById("new-task-name-input-field");
+    const dueDateInputField = document.getElementById("new-task-input-field-date");
+    const statusInputField = document.getElementById("new-task-input-field-checkbox");
 
     // Cancel Btn
     const cancelBtn = document.getElementById("new-task-modal-cancel-btn");
     cancelBtn.addEventListener("click", () => {
       modal.close();
-      inputField.value = "";
+      nameInputField.value = "";
       // UI.viewListModal(list);
     });
 
@@ -169,17 +171,23 @@ export default class UI {
     submitBtn.addEventListener("click", () => {
       const list = Storage.getSelectedList(); // FIXED TASK SAVING BUG
       modal.close();
-      const taskName = inputField.value;
+      const taskName = nameInputField.value;
 
       if (taskName !== "") {
-        const task = new Task(taskName, "Not Implemented", "Not completed");
+        const task = new Task(taskName, dueDateInputField.value, statusInputField.checked);
         Storage.addTask(task);
         list.addTask(task);
+
+        console.log(task)
 
         // Re render lists with new task
         UI.viewListModal();
       }
-      inputField.value = "";
+
+      // Reset Input Fields
+      nameInputField.value = "";
+      dueDateInputField.value = "";
+      statusInputField.checked = false;
     });
 
   }
