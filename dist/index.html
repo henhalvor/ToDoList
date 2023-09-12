@@ -21,8 +21,7 @@
             <button id="thisWeekBtn">This Week</button>
             <button id="addTagBtn">+ Add Tag</button>
           </div>
-          <div class="tag-buttons-wrapper">
-          </div>
+          <div class="tag-buttons-wrapper"></div>
         </div>
         <div class="main-content"></div>
       </div>
@@ -31,23 +30,57 @@
       <dialog tag-modal class="modal" id="new-tag-modal">
         <h1>New Tag</h1>
         <input type="text" class="input-field" id="new-tag-input-field" />
-        <button class="modal-cancel-btn close-btn" id="tag-modal-cancel-btn">Cancel</button>
-        <button class="modal-submit-btn add-btn" id="tag-modal-submit-btn">Add</button>
+        <button class="modal-cancel-btn close-btn" id="tag-modal-cancel-btn">
+          Cancel
+        </button>
+        <button class="modal-submit-btn add-btn" id="tag-modal-submit-btn">
+          Add
+        </button>
       </dialog>
       <dialog data-modal class="modal" id="new-list-modal">
         <h1>New List</h1>
         <input type="text" class="input-field" id="new-list-input-field" />
-        <button class="modal-cancel-btn close-btn" id="list-modal-cancel-btn">Cancel</button>
-        <button class="modal-sumbit-btn add-btn" id="list-modal-submit-btn">Add</button>
+        <button class="modal-cancel-btn close-btn" id="list-modal-cancel-btn">
+          Cancel
+        </button>
+        <button class="modal-sumbit-btn add-btn" id="list-modal-submit-btn">
+          Add
+        </button>
       </dialog>
       <dialog data-modal class="modal" id="new-task-modal">
         <h1>New Task</h1>
-        <input type="text" class="input-field" id="new-task-input-field" />
-        <button class="modal-cancel-btn close-btn" id="new-task-modal-cancel-btn">Cancel</button>
-        <button class="modal-sumbit-btn add-btn" id="new-task-modal-submit-btn">Add</button>
+        <div class="task-input-wrapper">
+          <label for="new-task-input-field">Task Name</label>
+          <input type="text" class="input-field" id="new-task-input-field" />
+        </div>
+        <div class="task-input-wrapper">
+          <label for="new-task-input-field-date">Due Date</label>
+          <input
+            type="datetime-local"
+            class="input-field"
+            id="new-task-input-field-date"
+          />
+        </div>
+        <div class="task-input-wrapper" id="task-input-checkbox-wrapper" style="flex-direction: row;">
+          <label for="new-task-input-field-checkbox">Complete</label>
+          <input type="checkbox" id="new-task-input-field-checkbox" />
+        </div>
+        <div class="new-task-modal-btn-wrapper">
+          <button
+            class="modal-cancel-btn close-btn"
+            id="new-task-modal-cancel-btn"
+          >
+            Cancel
+          </button>
+          <button
+            class="modal-sumbit-btn add-btn"
+            id="new-task-modal-submit-btn"
+          >
+            Add
+          </button>
+        </div>
       </dialog>
-      <dialog data-modal class="modal" id="view-list-modal">
-      </dialog>
+      <dialog data-modal class="modal" id="view-list-modal"></dialog>
     </div>
 
     <script src="main.js"></script>

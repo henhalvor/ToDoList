@@ -68,3 +68,25 @@ button {
     padding-top: 2rem;
 }
 
+
+/* New Task Modal */
+
+#new-task-modal {
+    display: flex;
+    flex-direction: column;
+}
+
+#new-task-modal > .task-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+
+#task-input-checkbox-wrapper {
+    gap: 1rem;
+}
+
+#task-input-checkbox-wrapper>input {
+    width: 1rem;
+}
+
