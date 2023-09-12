@@ -5,6 +5,7 @@ import Storage from "./storage";
 
 const MAIN_CONTENT_CONTAINER = document.querySelector(".main-content");
 const TAG_BTNS_CONTAINER = document.querySelector(".tag-buttons-wrapper");
+const INITIAL_RENDERED_LIST_LENGHT = 3;
 
 export default class UI {
   static loadHomepage() {
@@ -72,7 +73,9 @@ export default class UI {
     cancelBtn.addEventListener("click", () => {
       modal.close();
       inputField.value = "";
-      //UI.loadTagPage(tag);
+      
+      // Reload tag page to render Add List
+      UI.loadTagPage();
     });
 
     // Submit btn
@@ -140,6 +143,9 @@ export default class UI {
     closeBtn.classList.add("close-btn");
     closeBtn.addEventListener("click", () => modal.close());
     modal.appendChild(closeBtn);
+
+    // Re render task page MAYBE CHANGE TO RENDERLISTS()
+    UI.loadTagPage()
   }
 
   static createNewTaskModal() {
@@ -170,10 +176,12 @@ export default class UI {
         Storage.addTask(task);
         list.addTask(task);
 
-        UI.viewListModal(list);
+        // Re render lists with new task
+        UI.viewListModal();
       }
       inputField.value = "";
     });
+
   }
 
   // Loading Content
@@ -231,7 +239,7 @@ export default class UI {
         cardTitle.textContent = `${list.getName()}`;
         card.appendChild(cardTitle);
 
-        for (let i = 0; 1 < 5 && i < listTasks.length; i++) {
+        for (let i = 0; i < Math.min(INITIAL_RENDERED_LIST_LENGHT, listTasks.length); i++){
           const task = listTasks[i];
           const cardTaskEl = document.createElement("h4");
           cardTaskEl.textContent = `${task.getName()}`;
