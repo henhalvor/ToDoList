@@ -125,9 +125,23 @@ export default class UI {
     modal.appendChild(listTitle);
 
     listTasks.forEach((task) => {
-      const taskEl = document.createElement("p");
-      taskEl.textContent = `${task.getName()}`;
-      modal.appendChild(taskEl);
+      const taskContainer = document.createElement("div");
+      taskContainer.classList.add("task-container");
+
+      const taskNameEl = document.createElement("p");
+      taskNameEl.textContent = `${task.getName()}`;
+
+      const taskDueDateEl = document.createElement("p");
+      taskDueDateEl.textContent = `Deadline: ${task.getDueDate()}`;
+
+      const taskStatusEl = document.createElement("p");
+      taskStatusEl.textContent = `Complete: ${task.getStatus()}`;
+
+      taskContainer.appendChild(taskNameEl);
+      taskContainer.appendChild(taskDueDateEl);
+      taskContainer.appendChild(taskStatusEl);
+
+      modal.appendChild(taskContainer);
     });
 
     // Add Btn
