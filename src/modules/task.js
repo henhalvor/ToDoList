@@ -3,6 +3,7 @@ export default class Task {
     this.name = name;
     this.dueDate = dueDate;
     this.status = status;
+    this.id = Math.floor(Math.random() * 1000000000);
   }
 
   setName(name) {
@@ -28,4 +29,8 @@ export default class Task {
   getStatus() {
     return this.status;
   }
+
+  getId() {
+    return this.id;
+}
 }

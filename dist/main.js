@@ -56,7 +56,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Task)\n/* harmony export */ });\nclass Task {\n  constructor(name, dueDate, status) {\n    this.name = name;\n    this.dueDate = dueDate;\n    this.status = status;\n  }\n\n  setName(name) {\n    this.name = name;\n  }\n\n  getName() {\n    return this.name;\n  }\n\n  setDueDate(dueDate) {\n    this.dueDate = dueDate;\n  }\n\n  getDueDate() {\n    return this.dueDate;\n  }\n\n  setStatus(status) {\n    this.status = status;\n  }\n\n  getStatus() {\n    return this.status;\n  }\n}\n\n\n//# sourceURL=webpack://todolist/./src/modules/task.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Task)\n/* harmony export */ });\nclass Task {\n  constructor(name, dueDate, status) {\n    this.name = name;\n    this.dueDate = dueDate;\n    this.status = status;\n    this.id = Math.floor(Math.random() * 1000000000);\n  }\n\n  setName(name) {\n    this.name = name;\n  }\n\n  getName() {\n    return this.name;\n  }\n\n  setDueDate(dueDate) {\n    this.dueDate = dueDate;\n  }\n\n  getDueDate() {\n    return this.dueDate;\n  }\n\n  setStatus(status) {\n    this.status = status;\n  }\n\n  getStatus() {\n    return this.status;\n  }\n\n  getId() {\n    return this.id;\n}\n}\n\n\n//# sourceURL=webpack://todolist/./src/modules/task.js?");
 
 /***/ }),
 
