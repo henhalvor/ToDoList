@@ -214,6 +214,7 @@ export default class UI {
 
   static editTaskModal() {
     const task = Storage.getSelectedTask();
+    console.log(task);
     const modal = document.getElementById("edit-task-modal");
     modal.showModal();
 
@@ -235,12 +236,16 @@ export default class UI {
       dueDateInputField.value = "";
       statusInputField.checked = false;
       // UI.viewListModal(list);
+      Storage.setSelectedTask(null);
     });
 
     // Submit
     const submitBtn = document.getElementById("edit-task-modal-submit-btn");
     submitBtn.addEventListener("click", () => {
       modal.close();
+      // FIXES DUPLICATION BUG BUT CAUSES BROWSER CONSOLE ERROR
+      const task = Storage.getSelectedTask();
+
       const taskName = nameInputField.value;
       const taskDueDate = dueDateInputField.value;
       const taskStatus = statusInputField.checked;
@@ -256,9 +261,8 @@ export default class UI {
       // nameInputField.value = "";
       // dueDateInputField.value = "";
       // statusInputField.checked = false;
+      Storage.setSelectedTask(null);
     });
-
-    Storage.setSelectedTask(null);
   }
 
   // Loading Content
