@@ -1,5 +1,8 @@
 UI.js 
-add abiltiy to edit existing tasks
+add "delete" task
+add "delete" "rename" list
+add "delete" "rename" tag
+FIX browser console error on line 247
 
 
 
@@ -16,6 +19,7 @@ BUG New tasks only get saved on first list created with tasks
 
 
 STORAGE.js
+add delete task, list, tag
 add ability to save and load data to local storage
 
 
