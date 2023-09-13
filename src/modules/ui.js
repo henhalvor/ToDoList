@@ -127,6 +127,10 @@ export default class UI {
     listTasks.forEach((task) => {
       const taskContainer = document.createElement("div");
       taskContainer.classList.add("task-container");
+      taskContainer.addEventListener("click", () => {
+        Storage.setSelectedTask(task);
+        UI.editTaskModal();
+      })
 
       const taskNameEl = document.createElement("p");
       taskNameEl.textContent = `${task.getName()}`;
@@ -161,6 +165,8 @@ export default class UI {
     // Re render task page MAYBE CHANGE TO RENDERLISTS()
     UI.loadTagPage()
   }
+
+  
 
   static createNewTaskModal() {
     const list = Storage.getSelectedList();
@@ -204,6 +210,55 @@ export default class UI {
       statusInputField.checked = false;
     });
 
+  }
+
+  static editTaskModal() {
+    const task = Storage.getSelectedTask();
+    const modal = document.getElementById("edit-task-modal");
+    modal.showModal();
+
+    // Get Input Field
+    const nameInputField = document.getElementById("edit-task-name-input-field");
+    const dueDateInputField = document.getElementById("edit-task-date-input-field");
+    const statusInputField = document.getElementById("edit-task-status-input-field");
+
+    // Set default values
+    nameInputField.value = task.getName();
+    dueDateInputField.value = task.getDueDate();
+    statusInputField.checked = task.getStatus();
+
+    // Cancel Btn
+    const cancelBtn = document.getElementById("edit-task-modal-cancel-btn");
+    cancelBtn.addEventListener("click", () => {
+      modal.close();
+      nameInputField.value = "";
+      dueDateInputField.value = "";
+      statusInputField.checked = false;
+      // UI.viewListModal(list);
+    });
+
+    // Submit
+    const submitBtn = document.getElementById("edit-task-modal-submit-btn");
+    submitBtn.addEventListener("click", () => {
+      modal.close();
+      const taskName = nameInputField.value;
+      const taskDueDate = dueDateInputField.value;
+      const taskStatus = statusInputField.checked;
+
+      task.setName(taskName);
+      task.setDueDate(taskDueDate);
+      task.setStatus(taskStatus);
+
+      // Re render lists with new task
+      UI.viewListModal();
+      
+      // Reset Input Fields
+      // nameInputField.value = "";
+      // dueDateInputField.value = "";
+      // statusInputField.checked = false;
+    });
+
+    Storage.setSelectedTask(null);
   }
 
   // Loading Content

@@ -8,6 +8,7 @@ export default class Storage {
   // Selection logic
   static selectedTag = null;
   static selectedList = null;
+  static selectedTask = null;
 
   static getSelectedTag() {
     return Storage.selectedTag;
@@ -33,12 +34,20 @@ export default class Storage {
     }
   }
 
+  static getSelectedTask() {
+    return Storage.selectedTask;
+  }
+
   static setSelectedTag(tag) {
     Storage.selectedTag = tag;
   }
 
   static setSelectedList(list) {
     Storage.selectedList = list;
+  }
+
+  static setSelectedTask(task) {
+    Storage.selectedTask = task;
   }
 
   // Save data related functions

@@ -48,10 +48,15 @@
         </button>
       </dialog>
       <dialog data-modal class="modal" id="new-task-modal">
+        <div class="new-task-modal-container">
         <h1>New Task</h1>
         <div class="task-input-wrapper">
           <label for="new-task-input-field">Task Name</label>
-          <input type="text" class="input-field" id="new-task-name-input-field" />
+          <input
+            type="text"
+            class="input-field"
+            id="new-task-name-input-field"
+          />
         </div>
         <div class="task-input-wrapper">
           <label for="new-task-input-field-date">Due Date</label>
@@ -61,7 +66,11 @@
             id="new-task-input-field-date"
           />
         </div>
-        <div class="task-input-wrapper" id="task-input-checkbox-wrapper" style="flex-direction: row;">
+        <div
+          class="task-input-wrapper"
+          id="task-input-checkbox-wrapper"
+          style="flex-direction: row"
+        >
           <label for="new-task-input-field-checkbox">Complete</label>
           <input type="checkbox" id="new-task-input-field-checkbox" />
         </div>
@@ -79,8 +88,40 @@
             Add
           </button>
         </div>
+      </div>
       </dialog>
       <dialog data-modal class="modal" id="view-list-modal"></dialog>
+      <dialog data-modal class="modal" id="edit-task-modal">
+        <h1>Edit Task</h1>
+        <label for="edit-task-name-input-field">Name</label>
+        <input
+          type="text"
+          class="input-field"
+          id="edit-task-name-input-field"
+        />
+        <label for="edit-task-date-input-field">Deadline</label>
+        <input
+          type="datetime-local"
+          class="input-field"
+          id="edit-task-date-input-field"
+        />
+        <label for="edit-task-status-input-field">Status</label>
+        <input type="checkbox" id="edit-task-status-input-field" />
+        <div class="edit-task-modal-btn-container">
+          <button
+            class="modal-cancel-btn close-btn"
+            id="edit-task-modal-cancel-btn"
+          >
+            Cancel
+          </button>
+          <button
+            class="modal-submit-btn add-btn"
+            id="edit-task-modal-submit-btn"
+          >
+            Apply
+          </button>
+        </div>
+      </dialog>
     </div>
 
     <script src="main.js"></script>
