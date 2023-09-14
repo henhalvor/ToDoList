@@ -49,46 +49,46 @@
       </dialog>
       <dialog data-modal class="modal" id="new-task-modal">
         <div class="new-task-modal-container">
-        <h1>New Task</h1>
-        <div class="task-input-wrapper">
-          <label for="new-task-input-field">Task Name</label>
-          <input
-            type="text"
-            class="input-field"
-            id="new-task-name-input-field"
-          />
-        </div>
-        <div class="task-input-wrapper">
-          <label for="new-task-input-field-date">Due Date</label>
-          <input
-            type="datetime-local"
-            class="input-field"
-            id="new-task-input-field-date"
-          />
-        </div>
-        <div
-          class="task-input-wrapper"
-          id="task-input-checkbox-wrapper"
-          style="flex-direction: row"
-        >
-          <label for="new-task-input-field-checkbox">Complete</label>
-          <input type="checkbox" id="new-task-input-field-checkbox" />
-        </div>
-        <div class="new-task-modal-btn-wrapper">
-          <button
-            class="modal-cancel-btn close-btn"
-            id="new-task-modal-cancel-btn"
+          <h1>New Task</h1>
+          <div class="task-input-wrapper">
+            <label for="new-task-input-field">Task Name</label>
+            <input
+              type="text"
+              class="input-field"
+              id="new-task-name-input-field"
+            />
+          </div>
+          <div class="task-input-wrapper">
+            <label for="new-task-input-field-date">Due Date</label>
+            <input
+              type="datetime-local"
+              class="input-field"
+              id="new-task-input-field-date"
+            />
+          </div>
+          <div
+            class="task-input-wrapper"
+            id="task-input-checkbox-wrapper"
+            style="flex-direction: row"
           >
-            Cancel
-          </button>
-          <button
-            class="modal-sumbit-btn add-btn"
-            id="new-task-modal-submit-btn"
-          >
-            Add
-          </button>
+            <label for="new-task-input-field-checkbox">Complete</label>
+            <input type="checkbox" id="new-task-input-field-checkbox" />
+          </div>
+          <div class="new-task-modal-btn-wrapper">
+            <button
+              class="modal-cancel-btn close-btn"
+              id="new-task-modal-cancel-btn"
+            >
+              Cancel
+            </button>
+            <button
+              class="modal-sumbit-btn add-btn"
+              id="new-task-modal-submit-btn"
+            >
+              Add
+            </button>
+          </div>
         </div>
-      </div>
       </dialog>
       <dialog data-modal class="modal" id="view-list-modal"></dialog>
       <dialog data-modal class="modal" id="edit-task-modal">
@@ -120,6 +120,44 @@
             id="edit-task-modal-submit-btn"
           >
             Apply
+          </button>
+        </div>
+      </dialog>
+      <dialog data-modal class="modal" id="rename-tag-modal">
+        <h1>Rename Tag</h1>
+        <label for="rename-tag-input-field">New Name</label>
+        <input type="text" class="input-field" id="rename-tag-input-field" />
+        <div class="rename-tag-modal-btn-container">
+          <button
+            class="modal-submit-btn add-btn"
+            id="rename-tag-modal-submit-btn"
+          >
+            Apply
+          </button>
+          <button
+            class="modal-cancel-btn close-btn"
+            id="rename-tag-modal-cancel-btn"
+          >
+            Cancel
+          </button>
+        </div>
+      </dialog>
+      <dialog data-modal class="modal" id="rename-list-modal">
+        <h1>Rename List</h1>
+        <label for="rename-list-input-field">New Name</label>
+        <input type="text" class="input-field" id="rename-list-input-field" />
+        <div class="rename-list-modal-btn-container">
+          <button
+            class="modal-submit-btn add-btn"
+            id="rename-list-modal-submit-btn"
+          >
+            Apply
+          </button>
+          <button
+            class="modal-cancel-btn close-btn"
+            id="rename-list-modal-cancel-btn"
+          >
+            Cancel
           </button>
         </div>
       </dialog>
