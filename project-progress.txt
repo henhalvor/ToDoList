@@ -1,7 +1,7 @@
 UI.js 
-add "rename" list
-add "rename" tag
 FIX browser console error on line 247
+implement allTasksPage, loadTodayPage, LoadthisweekPage
+
 
 
 
