@@ -131,6 +131,9 @@ export default class UI {
     modal.appendChild(deleteBtn);
     const listTitle = document.createElement("h2");
     listTitle.textContent = `${list.getName()}`;
+    listTitle.addEventListener("dblclick", () => {
+      UI.renameListModal(list);
+    });
     modal.appendChild(listTitle);
 
     listTasks.forEach((task) => {
@@ -284,6 +287,58 @@ export default class UI {
     });
   }
 
+  static renameListModal(list) {
+    const modal = document.getElementById("rename-list-modal");
+    modal.showModal();
+
+    // Get Input Field
+    const nameInputField = document.getElementById("rename-list-input-field");
+    nameInputField.value = list.getName();
+
+    const cancelBtn = document.getElementById("rename-list-modal-cancel-btn");
+    cancelBtn.addEventListener("click", () => {
+      modal.close();
+      nameInputField.value = "";
+    });
+
+    const submitBtn = document.getElementById("rename-list-modal-submit-btn")
+    submitBtn.addEventListener("click", () => {
+      const newListName = nameInputField.value;
+      if(newListName !== "") {
+        list.setName(newListName);
+        UI.viewListModal();
+      }
+      modal.close();
+      nameInputField.value = "";
+    });
+  }
+
+  static renameTagModal(tag) {
+    const modal = document.getElementById("rename-tag-modal");
+    modal.showModal();
+
+    // Get Input Field
+    const nameInputField = document.getElementById("rename-tag-input-field");
+    nameInputField.value = tag.getName();
+
+    const cancelBtn = document.getElementById("rename-tag-modal-cancel-btn");
+    cancelBtn.addEventListener("click", () => {
+      modal.close();
+      nameInputField.value = "";
+    });
+
+    const submitBtn = document.getElementById("rename-tag-modal-submit-btn")
+    submitBtn.addEventListener("click", () => {
+      const newtagName = nameInputField.value;
+      if(newtagName !== "") {
+        tag.setName(newtagName);
+        UI.loadTagsToSidebar();
+      }
+      modal.close();
+      nameInputField.value = "";
+    });
+  }
+
   // Loading Content
   static loadTagsToSidebar() {
     TAG_BTNS_CONTAINER.innerHTML = "";
@@ -295,6 +350,9 @@ export default class UI {
       const tagBtn = document.createElement("button");
       tagBtn.classList.add("tag-btn");
       tagBtn.textContent = tag.getName();
+      tagBtn.addEventListener("dblclick", () => {
+        UI.renameTagModal(tag)
+      });
 
       const deleteTagBtn = document.createElement("button");
       deleteTagBtn.textContent = "X";
