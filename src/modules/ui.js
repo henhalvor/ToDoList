@@ -120,6 +120,15 @@ export default class UI {
     const listTasks = list.getTasks();
 
     // Rendered elements
+    const deleteBtn = document.createElement("button")
+    deleteBtn.textContent = "X";
+    deleteBtn.classList.add("delete-list-btn");
+    deleteBtn.addEventListener("click", () => {
+      UI.deleteList(list);
+      UI.loadTagPage();
+      modal.close();
+    });
+    modal.appendChild(deleteBtn);
     const listTitle = document.createElement("h2");
     listTitle.textContent = `${list.getName()}`;
     modal.appendChild(listTitle);
@@ -217,6 +226,16 @@ export default class UI {
     console.log(task);
     const modal = document.getElementById("edit-task-modal");
     modal.showModal();
+
+    // Delete Btn
+    const deleteBtn = document.getElementById("task-delete-btn");
+    deleteBtn.addEventListener("click", () => {
+      UI.deleteTask(task);
+      modal.close();
+
+      // Re render list
+      UI.viewListModal();
+    });
 
     // Get Input Field
     const nameInputField = document.getElementById("edit-task-name-input-field");
