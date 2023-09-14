@@ -21,7 +21,7 @@ export default class List {
     this.tasks.push(newTask);
   }
 
-  deleteTask(taskToDelete) {
+  removeTask(taskToDelete) {
     this.tasks = this.tasks.filter((task) => task.id !== taskToDelete.id);
   }
 

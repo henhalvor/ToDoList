@@ -11,7 +11,7 @@ export default class Tag {
         this.lists.push(newList);
     }
 
-    deleteList(listName) {
+    removeList(listName) {
         this.lists = this.lists.filter((list) => list.name !== listName);
     }
 

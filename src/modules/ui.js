@@ -270,14 +270,31 @@ export default class UI {
     TAG_BTNS_CONTAINER.innerHTML = "";
     const allTags = Storage.allTags;
     allTags.forEach((tag) => {
+      const tagContainer = document.createElement("div");
+      tagContainer.classList.add("tag-container");
+
       const tagBtn = document.createElement("button");
+      tagBtn.classList.add("tag-btn");
       tagBtn.textContent = tag.getName();
+
+      const deleteTagBtn = document.createElement("button");
+      deleteTagBtn.textContent = "X";
+      deleteTagBtn.classList.add("delete-tag-btn");
+
+      tagContainer.appendChild(tagBtn);
+      tagContainer.appendChild(deleteTagBtn);
+
       tagBtn.addEventListener("click", () => {
         Storage.setSelectedTag(tag);
         UI.loadTagPage();
       });
 
-      TAG_BTNS_CONTAINER.appendChild(tagBtn);
+      deleteTagBtn.addEventListener("click", () => {
+        UI.deleteTag(tag);
+        UI.loadTagsToSidebar();
+      });
+
+      TAG_BTNS_CONTAINER.appendChild(tagContainer);
     });
   }
 
@@ -350,7 +367,7 @@ export default class UI {
     const addTagBtn = document.querySelector("#addTagBtn");
 
     // Event listeners
-    allTasksBtn.addEventListener("click", () => UI.loadAllTasksPage());
+    allTasksBtn.addEventListener("click", () => UI.loadAllTasks());
     todayBtn.addEventListener("click", () => UI.loadTodayPage());
     thisWeekBtn.addEventListener("click", () => UI.loadThisWeekPage());
     addTagBtn.addEventListener("click", () => UI.createNewTagModal());
@@ -360,5 +377,39 @@ export default class UI {
 
   static mainContentWrapperReset() {
     MAIN_CONTENT_CONTAINER.innerHTML = "";
+  }
+
+  // Delete functions
+
+  static deleteTask(task) {
+    Storage.removeTask(task);
+    const list = Storage.getSelectedList();
+    list.removeTask(task);
+    console.log(`Task ${task.getName()} deleted.`);
+  }
+
+  static deleteList(list) {
+    // Remove all tasks in list
+    list.getTasks().forEach((task) => {
+      UI.deleteTask(task);
+    })
+    // Remove list from Tag and Storage
+    Storage.removeList(list);
+    const tag = Storage.getSelectedTag();
+    tag.removeList(list);
+    console.log(`List ${list.getName()} deleted.`);
+  }
+
+  static deleteTag(tag) {
+    // Remove all lists in tag
+    tag.getLists().forEach((list) => {
+      UI.deleteList(list);
+    })
+    // Remove tag from Storage
+    Storage.removeTag(tag);
+    console.log(`Tag ${tag.getName()} deleted.`);
+
+    UI.loadAllTasks();
+    console.log(Storage.getAllTasks());
   }
 }

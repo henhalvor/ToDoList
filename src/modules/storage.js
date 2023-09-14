@@ -130,6 +130,21 @@ export default class Storage {
     return Storage.allTags.push(tag);
   }
 
+  static removeTask(task) {
+    const index = Storage.allTasks.indexOf(task);
+    Storage.allTasks.splice(index, 1);
+  }
+
+  static removeList(list) {
+    const index = Storage.allLists.indexOf(list);
+    Storage.allLists.splice(index, 1);
+  }
+
+  static removeTag(tag) {
+    const index = Storage.allTags.indexOf(tag);
+    Storage.allTags.splice(index, 1);
+  }
+
   // Helper Functions
   static updateArrayWithoutDuplicates(originalArray, newArray) {
     // Create a Set from the original array to track existing values
