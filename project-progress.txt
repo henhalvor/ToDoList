@@ -1,7 +1,6 @@
 UI.js 
-add "delete" task
-add "delete" "rename" list
-add "delete" "rename" tag
+add "rename" list
+add "rename" tag
 FIX browser console error on line 247
 
 
