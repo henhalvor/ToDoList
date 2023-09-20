@@ -14,11 +14,8 @@ Date and Status fucntionality for tasks()
 Priority system for lists
 
 
-BUG New tasks only get saved on first list created with tasks
-
 
 STORAGE.js
-add delete task, list, tag
 add ability to save and load data to local storage
 
 
