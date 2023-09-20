@@ -1,7 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --primary-color: white;
     --secondary-color: rgb(193, 180, 180);
     --accent-color: gray;
+    --add-btn-color: rgb(10, 168, 10);
+    --close-btn-color: gray;
+    --btn-danger-color: rgb(216, 16, 16);
 }
 
 
@@ -94,3 +101,15 @@ button {
     padding-top: 1rem;
 }
 
+
+/* Utility classes */
+.close-btn {
+    background-color: var(--close-btn-color);
+}
+
+.add-btn {
+    background-color: var(--add-btn-color);
+}
+
+.btn-danger {
+    background-color: var(--btn-danger-color);
