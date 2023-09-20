@@ -19,7 +19,7 @@
             <button id="allTasksBtn">All Tasks</button>
             <button id="todayBtn">Today</button>
             <button id="thisWeekBtn">This Week</button>
-            <button id="addTagBtn">+ Add Tag</button>
+            <button id="addTagBtn" class="add-btn">+ Add Tag</button>
           </div>
           <div class="tag-buttons-wrapper"></div>
         </div>
@@ -93,7 +93,6 @@
       <dialog data-modal class="modal" id="view-list-modal"></dialog>
       <dialog data-modal class="modal" id="edit-task-modal">
         <h1>Edit Task</h1>
-        <button id="task-delete-btn">x</button>
         <label for="edit-task-name-input-field">Name</label>
         <input
           type="text"
@@ -121,44 +120,46 @@
           >
             Apply
           </button>
-        </div>
+          <button id="task-delete-btn" class="btn-danger">Delete Task</button>
       </dialog>
-      <dialog data-modal class="modal" id="rename-tag-modal">
-        <h1>Rename Tag</h1>
+      <dialog data-modal class="modal" id="edit-tag-modal">
+        <h1>Edit Tag</h1>
         <label for="rename-tag-input-field">New Name</label>
         <input type="text" class="input-field" id="rename-tag-input-field" />
-        <div class="rename-tag-modal-btn-container">
+        <div id="edit-tag-modal-btn-container">
           <button
             class="modal-submit-btn add-btn"
-            id="rename-tag-modal-submit-btn"
+            id="edit-tag-modal-submit-btn"
           >
             Apply
           </button>
           <button
             class="modal-cancel-btn close-btn"
-            id="rename-tag-modal-cancel-btn"
+            id="edit-tag-modal-cancel-btn"
           >
             Cancel
           </button>
+          <button id="delete-tag-btn" class="btn-danger">Delete Tag</button>
         </div>
       </dialog>
-      <dialog data-modal class="modal" id="rename-list-modal">
-        <h1>Rename List</h1>
+      <dialog data-modal class="modal" id="edit-list-modal">
+        <h1>Edit List</h1>
         <label for="rename-list-input-field">New Name</label>
         <input type="text" class="input-field" id="rename-list-input-field" />
-        <div class="rename-list-modal-btn-container">
+        <div class="edit-list-modal-btn-container">
           <button
             class="modal-submit-btn add-btn"
-            id="rename-list-modal-submit-btn"
+            id="edit-list-modal-submit-btn"
           >
             Apply
           </button>
           <button
             class="modal-cancel-btn close-btn"
-            id="rename-list-modal-cancel-btn"
+            id="edit-list-modal-cancel-btn"
           >
             Cancel
           </button>
+          <button id="delete-list-btn" class="btn-danger">Delete List</button>
         </div>
       </dialog>
     </div>

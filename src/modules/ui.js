@@ -120,26 +120,17 @@ export default class UI {
     const listTasks = list.getTasks();
 
     // Rendered elements
-    const deleteBtn = document.createElement("button")
-    deleteBtn.textContent = "X";
-    deleteBtn.classList.add("delete-list-btn");
-    deleteBtn.addEventListener("click", () => {
-      UI.deleteList(list);
-      UI.loadTagPage();
-      modal.close();
-    });
-    modal.appendChild(deleteBtn);
     const listTitle = document.createElement("h2");
     listTitle.textContent = `${list.getName()}`;
     listTitle.addEventListener("dblclick", () => {
-      UI.renameListModal(list);
+      UI.editListModal(list);
     });
     modal.appendChild(listTitle);
 
     listTasks.forEach((task) => {
       const taskContainer = document.createElement("div");
       taskContainer.classList.add("task-container");
-      taskContainer.addEventListener("click", () => {
+      taskContainer.addEventListener("dblclick", () => {
         Storage.setSelectedTask(task);
         UI.editTaskModal();
       })
@@ -230,16 +221,6 @@ export default class UI {
     const modal = document.getElementById("edit-task-modal");
     modal.showModal();
 
-    // Delete Btn
-    const deleteBtn = document.getElementById("task-delete-btn");
-    deleteBtn.addEventListener("click", () => {
-      UI.deleteTask(task);
-      modal.close();
-
-      // Re render list
-      UI.viewListModal();
-    });
-
     // Get Input Field
     const nameInputField = document.getElementById("edit-task-name-input-field");
     const dueDateInputField = document.getElementById("edit-task-date-input-field");
@@ -278,30 +259,35 @@ export default class UI {
 
       // Re render lists with new task
       UI.viewListModal();
-      
-      // Reset Input Fields
-      // nameInputField.value = "";
-      // dueDateInputField.value = "";
-      // statusInputField.checked = false;
       Storage.setSelectedTask(null);
+    });
+
+    // Delete Btn
+    const deleteBtn = document.getElementById("task-delete-btn");
+    deleteBtn.addEventListener("click", () => {
+      UI.deleteTask(task);
+      modal.close();
+
+      // Re render list
+      UI.viewListModal();
     });
   }
 
-  static renameListModal(list) {
-    const modal = document.getElementById("rename-list-modal");
+  static editListModal(list) {
+    const modal = document.getElementById("edit-list-modal");
     modal.showModal();
 
     // Get Input Field
     const nameInputField = document.getElementById("rename-list-input-field");
     nameInputField.value = list.getName();
 
-    const cancelBtn = document.getElementById("rename-list-modal-cancel-btn");
+    const cancelBtn = document.getElementById("edit-list-modal-cancel-btn");
     cancelBtn.addEventListener("click", () => {
       modal.close();
       nameInputField.value = "";
     });
 
-    const submitBtn = document.getElementById("rename-list-modal-submit-btn")
+    const submitBtn = document.getElementById("edit-list-modal-submit-btn")
     submitBtn.addEventListener("click", () => {
       const newListName = nameInputField.value;
       if(newListName !== "") {
@@ -311,23 +297,34 @@ export default class UI {
       modal.close();
       nameInputField.value = "";
     });
+
+    const deleteListBtn = document.getElementById("delete-list-btn");
+    deleteListBtn.addEventListener("click", () => {
+      UI.deleteList(list);
+      UI.loadTagPage();
+      modal.close();
+
+      // Close deleted list's modal
+      const listModal = document.getElementById("view-list-modal");
+      listModal.close();
+    });
   }
 
-  static renameTagModal(tag) {
-    const modal = document.getElementById("rename-tag-modal");
+  static editTagModal(tag) {
+    const modal = document.getElementById("edit-tag-modal");
     modal.showModal();
 
     // Get Input Field
     const nameInputField = document.getElementById("rename-tag-input-field");
     nameInputField.value = tag.getName();
 
-    const cancelBtn = document.getElementById("rename-tag-modal-cancel-btn");
+    const cancelBtn = document.getElementById("edit-tag-modal-cancel-btn");
     cancelBtn.addEventListener("click", () => {
       modal.close();
       nameInputField.value = "";
     });
 
-    const submitBtn = document.getElementById("rename-tag-modal-submit-btn")
+    const submitBtn = document.getElementById("edit-tag-modal-submit-btn")
     submitBtn.addEventListener("click", () => {
       const newtagName = nameInputField.value;
       if(newtagName !== "") {
@@ -336,6 +333,15 @@ export default class UI {
       }
       modal.close();
       nameInputField.value = "";
+    });
+
+    // Delete Tag
+    const deleteTagBtn = document.getElementById("delete-tag-btn");
+
+    deleteTagBtn.addEventListener("click", () => {
+      modal.close();
+      UI.deleteTag(tag);
+      UI.loadTagsToSidebar();
     });
   }
 
@@ -351,24 +357,14 @@ export default class UI {
       tagBtn.classList.add("tag-btn");
       tagBtn.textContent = tag.getName();
       tagBtn.addEventListener("dblclick", () => {
-        UI.renameTagModal(tag)
+        UI.editTagModal(tag)
       });
 
-      const deleteTagBtn = document.createElement("button");
-      deleteTagBtn.textContent = "X";
-      deleteTagBtn.classList.add("delete-tag-btn");
-
       tagContainer.appendChild(tagBtn);
-      tagContainer.appendChild(deleteTagBtn);
 
       tagBtn.addEventListener("click", () => {
         Storage.setSelectedTag(tag);
         UI.loadTagPage();
-      });
-
-      deleteTagBtn.addEventListener("click", () => {
-        UI.deleteTag(tag);
-        UI.loadTagsToSidebar();
       });
 
       TAG_BTNS_CONTAINER.appendChild(tagContainer);
