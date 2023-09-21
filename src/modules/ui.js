@@ -16,11 +16,26 @@ export default class UI {
 
   static loadAllTasks() {
     UI.mainContentWrapperReset();
-    // Test
-    const textEl = document.createElement("h2");
-    textEl.textContent = "All tasks";
-    textEl.classList.add("text");
-    MAIN_CONTENT_CONTAINER.appendChild(textEl);
+   
+    const allTasks = Storage.getAllTasks();
+    allTasks.forEach((task) => {
+      const taskContainer = document.createElement("div");
+      taskContainer.classList.add("task-card");
+      
+      const taskNameEl = document.createElement("p");
+      taskNameEl.textContent = `${task.getName()}`;
+
+      const taskDueDateEl = document.createElement("p");
+      taskDueDateEl.textContent = `Deadline: ${task.getDueDate()}`;
+
+      const taskStatusEl = document.createElement("p");
+      taskStatusEl.textContent = `Complete: ${task.getStatus()}`;
+
+      taskContainer.appendChild(taskNameEl);
+      taskContainer.appendChild(taskDueDateEl);
+      taskContainer.appendChild(taskStatusEl);
+      MAIN_CONTENT_CONTAINER.appendChild(taskContainer);
+    })
   }
 
   // Modals

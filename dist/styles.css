@@ -113,3 +113,12 @@ button {
 
 .btn-danger {
     background-color: var(--btn-danger-color);
+}
+
+.task-card {
+    background-color: var(--secondary-color);
+    margin: 1rem;
+    padding: 0.5rem;
+    width: 13rem;
+    line-break: auto;
+}
