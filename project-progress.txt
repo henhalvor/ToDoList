@@ -1,6 +1,6 @@
 UI.js 
 FIX browser console error on line 247
-implement allTasksPage, loadTodayPage, LoadthisweekPage
+Add datetime sorting to allTasksPage, loadTodayPage, LoadthisweekPage
 
 
 
@@ -8,8 +8,6 @@ implement allTasksPage, loadTodayPage, LoadthisweekPage
 
 ADD:
 CSS utlity classes style
-
-Date and Status fucntionality for tasks()
 
 Priority system for lists
 
