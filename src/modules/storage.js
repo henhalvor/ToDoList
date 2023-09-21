@@ -91,8 +91,9 @@ export default class Storage {
     const tasks = Storage.allTasks;
     let todayTasks = [];
 
-    tasks.map((task) => {
-      if (task.getDueDate() === day) {
+    tasks.forEach((task) => {
+      const taskDate = new Date(task.getDueDate());
+      if (taskDate.getDate() === day) {
         todayTasks.push(task);
       }
     });

@@ -38,6 +38,31 @@ export default class UI {
     })
   }
 
+  static loadTodayPage() {
+    UI.mainContentWrapperReset();
+
+    const todayTasks = Storage.getTodayTasks();
+    todayTasks.forEach((task) => {
+      const taskContainer = document.createElement("div");
+      taskContainer.classList.add("task-card");
+      
+      const taskNameEl = document.createElement("p");
+      taskNameEl.textContent = `${task.getName()}`;
+
+      const taskDueDateEl = document.createElement("p");
+      taskDueDateEl.textContent = `Deadline: ${task.getDueDate()}`;
+
+      const taskStatusEl = document.createElement("p");
+      taskStatusEl.textContent = `Complete: ${task.getStatus()}`;
+
+      taskContainer.appendChild(taskNameEl);
+      taskContainer.appendChild(taskDueDateEl);
+      taskContainer.appendChild(taskStatusEl);
+      MAIN_CONTENT_CONTAINER.appendChild(taskContainer);
+    })
+
+  }
+
   // Modals
   static createNewTagModal() {
     const modal = document.getElementById("new-tag-modal");
