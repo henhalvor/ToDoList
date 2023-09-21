@@ -108,9 +108,12 @@ export default class Storage {
     const tasks = Storage.allTasks;
     let thisWeekTasks = [];
 
-    tasks.map((task) => {
-      const taskWeek = Storage.getWeekNumber(task.getDueDate());
-      if (taskWeek === currentWeek) {
+    tasks.forEach(task => {
+      // Convert datetime-local string to Date object
+      const dueDate = new Date(task.dueDate); 
+      const taskWeek = Storage.getWeekNumber(dueDate);
+  
+      if(taskWeek === currentWeek) {
         thisWeekTasks.push(task);
       }
     });

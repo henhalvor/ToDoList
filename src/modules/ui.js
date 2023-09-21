@@ -60,7 +60,30 @@ export default class UI {
       taskContainer.appendChild(taskStatusEl);
       MAIN_CONTENT_CONTAINER.appendChild(taskContainer);
     })
+  }
 
+  static loadThisWeekPage() {
+    UI.mainContentWrapperReset();
+
+    const thisWeekTasks = Storage.getThisWeekTasks();
+    thisWeekTasks.forEach((task) => {
+      const taskContainer = document.createElement("div");
+      taskContainer.classList.add("task-card");
+      
+      const taskNameEl = document.createElement("p");
+      taskNameEl.textContent = `${task.getName()}`;
+
+      const taskDueDateEl = document.createElement("p");
+      taskDueDateEl.textContent = `Deadline: ${task.getDueDate()}`;
+
+      const taskStatusEl = document.createElement("p");
+      taskStatusEl.textContent = `Complete: ${task.getStatus()}`;
+
+      taskContainer.appendChild(taskNameEl);
+      taskContainer.appendChild(taskDueDateEl);
+      taskContainer.appendChild(taskStatusEl);
+      MAIN_CONTENT_CONTAINER.appendChild(taskContainer);
+    })
   }
 
   // Modals
